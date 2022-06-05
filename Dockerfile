@@ -16,4 +16,4 @@ RUN apk add --no-cache curl runit tzdata \
 
 VOLUME /config
 
-ENTRYPOINT ["runsvdir","-P","/etc/service"]
+ENTRYPOINT ["sh","-c","/workdir/entrypoint.sh"]

@@ -7,5 +7,11 @@ RESTART_TIME=$(echo ${UPDATE_TIME/:/} | sed 's/^0//g')
 
 if [[ "${DATE}" = "${RESTART_TIME}" ]]; then
     echo "Daily update is running"
+    if [[ "${INSTALL_VERSION}" != "disable" ]]; then
+        /workdir/install.sh
+    fi
+    if [[ "${UPDATE_GEODATA}" = "true" ]]; then
+        /workdir/install_geodata.sh
+    fi
     sv restart xray
 fi
