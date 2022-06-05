@@ -1,0 +1,30 @@
+version: '2.3'
+services:
+  xray-pro:
+    image: ghcr.io/wy580477/xray-pro-container:latest
+    container_name: xray-pro
+    network_mode: host
+    restart: unless-stopped
+    logging:
+      driver: "journald"
+      # 个人偏好journald自动管理日志。
+      options:
+        tag: "{{.Name}}"
+        # 给日志添加容器名(container_name)的tag。
+    volumes:
+      - ./config:/config
+      # 配置文件和路由规则geo资源文件目录。将./config换成你在host上想指定的目录。
+    environment:
+      CONF_FILE_NAME: "config.json"
+      # 使用的配置文件名称。留空则加载config目录下所有配置文件。
+      INSTALL_VERSION: "latest"
+      # 指定Xray安装版本。格式为："1.5.5"
+      # 设置为"latest"将自动下载最新稳定版本。设置为"disable"则禁用Xray自动更新。
+      # 设置为"local"则自动使用config目录下Xray-linux*.zip文件安装。
+      UPDATE_GEODATA: "true"
+      # 是否自动更新路由规则geo资源文件。设置为"true"以外任何值则禁用自动更新。
+      UPDATE_TIME: "6:00"
+      # 指定每天自动更新Xray版本和路由规则geo资源文件的时间。24小时制，时区为TZ变量所指定的时区。
+      # 留空则禁用每天自动更新。
+      TZ: "Asia/Shanghai"
+      # 指定时区，Asia/Shanghai为国内时区。

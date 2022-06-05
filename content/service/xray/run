@@ -1,0 +1,18 @@
+#!/bin/sh
+
+if [[ "${INSTALL_VERSION}" != "disable" ]]; then
+    /workdir/install.sh
+fi
+
+if [[ "${UPDATE_GEODATA}" = "true" ]]; then
+    /workdir/install_geodata.sh
+fi
+
+export XRAY_LOCATION_ASSET=/config
+
+# Run Xray
+if [[ "${CONF_FILE_NAME}" = "" ]]; then
+    exec xray run -confdir /config
+else
+    exec xray run -c /config/"${CONF_FILE_NAME}"
+fi 
