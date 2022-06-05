@@ -1,5 +1,6 @@
 # Xray-Pro-Container
 
+- amd64,arm64,386,armv7,ppc64le,s390x 多架构支持
 - 可自动升级到最新稳定版 Xray 核心，或指定版本，也可使用 Xray-core 项目发布的 zip 包离线安装。
 - 自动升级 Loyalsoildier 加强版路由规则文件
 - 指定每日更新时间
