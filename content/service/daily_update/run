@@ -5,7 +5,7 @@ sleep 58
 DATE=$(date +%H%M | sed 's/^0//g')
 RESTART_TIME=$(echo ${UPDATE_TIME/:/} | sed 's/^0//g')
 
-if [[ "${DATE}" = "${UPTATE_TIME}" ]]; then
+if [[ "${DATE}" = "${UPDATE_TIME}" ]]; then
     echo "Daily update is running"
     sv restart xray
 fi
