@@ -16,7 +16,7 @@ services:
       # 配置文件和路由规则geo资源文件目录。将./config换成你在host上想指定的目录。
     environment:
       CONF_FILE_NAME: "config.json"
-      # 使用的配置文件名称。留空则加载config目录下所有配置文件。
+      # 使用的配置文件名称。留空则以目录方式加载config目录下的配置文件。
       INSTALL_VERSION: "latest"
       # 指定Xray安装版本。格式为："1.5.5"
       # 设置为"latest"将自动下载最新稳定版本。设置为"disable"则禁用Xray自动更新。
